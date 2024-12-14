@@ -22,6 +22,21 @@ class SignUpScreen extends StatelessWidget {
           width: size.width,
           child: Stack(
             children: [
+               Positioned(
+                          top: 10,
+                         left: 10,
+                          child: SafeArea(
+                            child: IconButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              icon: const Icon(
+                                Icons.arrow_back_ios,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
               Column(
                 children: [
                   const Expanded(
@@ -52,28 +67,31 @@ class SignUpScreen extends StatelessWidget {
                           icon: Icons.email,
                           label: 'Email',
                         ),
-                        const SizedBox(height: 16),
+                         const SizedBox(height: 16),
                         const Customtextfield(
                           icon: Icons.lock,
                           label: 'Senha',
                           issecret: true,
-                        ),
-                        const SizedBox(height: 16),
+                        ), const SizedBox(height: 16),
+                      
                         const Customtextfield(
                           icon: Icons.person,
                           label: 'Nome',
-                        ),
+                        ), 
                         const SizedBox(height: 16),
+                      
                         const Customtextfield(
                           icon: Icons.phone,
                           label: 'Celular',
                         ),
-                        const SizedBox(height: 16),
-                        const Customtextfield(
+                         const SizedBox(height: 16),
+                      
+                        Customtextfield(
                           icon: Icons.file_copy,
                           label: 'Cpf',
-                        ),
-                        const SizedBox(height: 24),
+                          inputFormatters: [cpffFormatter],
+                        ), const SizedBox(height: 16),
+                      
                         SizedBox(
                           height: 50,
                           child: ElevatedButton(
@@ -90,21 +108,7 @@ class SignUpScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Positioned(
-                          top: 10,
-                          left: 10,
-                          child: SafeArea(
-                            child: IconButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              icon: const Icon(
-                                Icons.arrow_back_ios,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
+                       
                       ],
                     ),
                   ),
