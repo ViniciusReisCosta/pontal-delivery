@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:pontal_delivery/confing/custom_colors.dart';
 import 'package:pontal_delivery/src/auth/components/customtextfield.dart';
@@ -8,6 +9,10 @@ class SignUpScreen extends StatelessWidget {
 
   final cpffFormatter = MaskTextInputFormatter(
    mask: '###.###.###-##',
+   filter:{'#':RegExp(r'[0-9]')},
+  );
+ final phoneFormatter = MaskTextInputFormatter(
+   mask: '##.#.####-####',
    filter:{'#':RegExp(r'[0-9]')},
   );
 
@@ -57,7 +62,7 @@ class SignUpScreen extends StatelessWidget {
                       vertical: 40,
                     ),
                     decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 244, 244, 244),
                         borderRadius:
                             BorderRadius.vertical(top: Radius.circular(45))),
                     child: Column(
@@ -80,9 +85,10 @@ class SignUpScreen extends StatelessWidget {
                         ), 
                         const SizedBox(height: 16),
                       
-                        const Customtextfield(
+                        Customtextfield(
                           icon: Icons.phone,
                           label: 'Celular',
+                          inputFormatters:[phoneFormatter],
                         ),
                          const SizedBox(height: 16),
                       

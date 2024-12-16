@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:pontal_delivery/confing/custom_colors.dart';
+import 'package:pontal_delivery/src/auth/base_screen.dart';
 import 'package:pontal_delivery/src/auth/sign_up_screen.dart';
 import 'components/customtextfield.dart';
 
@@ -96,7 +97,12 @@ class SignInscreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18),
                               )),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(builder: (c) {
+                              return  const Basescreen();
+                            }));
+                          },
                           child: const Text(
                             'Entrar',
                             style: TextStyle(fontSize: 18, color: Colors.white),
@@ -145,11 +151,10 @@ class SignInscreen extends StatelessWidget {
                               side: const BorderSide(
                                   width: 2, color: Colors.green)),
                           onPressed: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (c){
-                                return   SignUpScreen();
-                              }
-                            ));
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (c) {
+                              return SignUpScreen();
+                            }));
                           },
                           child: const Text(
                             'Novo Usuario',
