@@ -16,6 +16,7 @@ class HomeTab extends StatelessWidget {
     'fit',
     'acompanhamentos'
   ];
+  String isselectedCategory='frutas';
  @override
   Widget build(BuildContext context) {
     return Scaffold(
