@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pontal_delivery/confing/custom_colors.dart';
 import 'package:pontal_delivery/src/home/components/category_title.dart';
+
+import '../config/custom_colors.dart';
 
 class HomeTab extends StatelessWidget {
   HomeTab({super.key});
@@ -29,7 +30,7 @@ class HomeTab extends StatelessWidget {
               TextSpan(
                 text: 'Pontal',
                 style: TextStyle(
-                  color: CustomColors.customswatchColor,
+                  color: CustomColors.customSwatchColor,
                 ),
               ),
               const TextSpan(
@@ -52,7 +53,7 @@ class HomeTab extends StatelessWidget {
                   onPressed: () {},
                   icon: Icon(
                     Icons.shopping_cart,
-                    color: CustomColors.customswatchColor,
+                    color: CustomColors.customSwatchColor,
                   ),
                 ),
               ),
@@ -75,9 +76,9 @@ class HomeTab extends StatelessWidget {
                   color: Colors.grey.shade400,
                   fontSize: 14,
                 ),
-                prefixIcon: const Icon(
+                prefixIcon: Icon(
                   Icons.search,
-                  color: CustomColors.customContrastColor,
+                  color: CustomColors.customSwatchColor,
                   size: 21,
                 ),
                 border: OutlineInputBorder(

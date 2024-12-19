@@ -1,8 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:pontal_delivery/confing/custom_colors.dart';
-import 'package:pontal_delivery/src/auth/base_screen.dart';
 import 'package:pontal_delivery/src/auth/sign_up_screen.dart';
+import '../base/base_screen.dart';
+import '../config/custom_colors.dart';
 import 'components/customtextfield.dart';
 
 class SignInscreen extends StatelessWidget {
@@ -13,7 +13,7 @@ class SignInscreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-        backgroundColor: CustomColors.customswatchColor,
+        backgroundColor: CustomColors.customSwatchColor,
         body: SizedBox(
           height: size.height,
           width: size.width,
@@ -93,7 +93,7 @@ class SignInscreen extends StatelessWidget {
                         height: 50,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.green,
+                              backgroundColor: Colors.deepOrange,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18),
                               )),
@@ -114,9 +114,9 @@ class SignInscreen extends StatelessWidget {
                         alignment: Alignment.centerRight,
                         child: TextButton(
                             onPressed: () {},
-                            child: const Text('esqueceu a senha?',
+                            child: Text('esqueceu a senha?',
                                 style: TextStyle(
-                                    color: CustomColors.customContrastColor))),
+                                    color: CustomColors.customConstrastColor))),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(bottom: 10.0),

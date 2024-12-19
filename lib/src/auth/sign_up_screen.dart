@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:pontal_delivery/confing/custom_colors.dart';
+
 import 'package:pontal_delivery/src/auth/components/customtextfield.dart';
+
+import '../config/custom_colors.dart';
 
 class SignUpScreen extends StatelessWidget {
    SignUpScreen({super.key});
@@ -20,7 +22,7 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: CustomColors.customContrastColor,
+      backgroundColor: CustomColors.customConstrastColor,
       body: SingleChildScrollView(
         child: SizedBox(
           height: size.height,
