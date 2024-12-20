@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:pontal_delivery/src/home/components/category_title.dart';
+import 'package:pontal_delivery/src/home/components/category_tile.dart';
 
 import '../config/custom_colors.dart';
 
-class HomeTab extends StatelessWidget {
-  HomeTab({super.key});
+class HomeTab extends StatefulWidget {
+  HomeTab({Key? key}) : super(key: key);
 
+  @override
+  State<HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
   final List<String> categories = [
     'executivos',
     'bebidas',
@@ -14,9 +19,12 @@ class HomeTab extends StatelessWidget {
     'Entradas e petiscos',
     'pratos kid/individual',
     'fit',
-    'acompanhamentos'
+    'acompanhamentos',
   ];
- @override
+
+  String selectedCategory = '';
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -38,11 +46,11 @@ class HomeTab extends StatelessWidget {
               ),
             ],
           ),
-        ),  actions: [
+        ),
+        actions: [
           Padding(
             padding: const EdgeInsets.only(top: 15, right: 15),
             child: GestureDetector(
-              onTap: () {},
               child: Badge(
                 backgroundColor: const Color.fromARGB(255, 255, 0, 0),
                 label: const Text(
@@ -61,9 +69,10 @@ class HomeTab extends StatelessWidget {
           ),
         ],
       ),
-       body: Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          // Campo de pesquisa
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: TextFormField(
@@ -87,24 +96,37 @@ class HomeTab extends StatelessWidget {
                 ),
               ),
             ),
-          ),   Expanded(
-            child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              itemBuilder: (_, index) {
-                return CategoryTitle(
-                  category: categories[index],
-                  isSelected: false,
-                );
-              },
-              separatorBuilder: (_, index) => const SizedBox(width: 10),
-              itemCount: categories.length,
+          ),
+          // Lista de categorias centralizada horizontalmente
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Center(
+              child: SizedBox(
+                height: 60,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  itemBuilder: (_, index) {
+                    return CategoryTile(
+                      onPressed: () {
+                        setState(() {
+                          selectedCategory = categories[index];
+                        });
+                      },
+                      category: categories[index],
+                      isSelected: selectedCategory == categories[index],
+                    );
+                  },
+                  separatorBuilder: (_, index) => const SizedBox(width: 10),
+                  itemCount: categories.length,
+                ),
+              ),
             ),
           ),
-          //
-
         ],
       ),
     );
   }
 }
+
