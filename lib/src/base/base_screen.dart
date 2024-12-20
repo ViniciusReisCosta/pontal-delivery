@@ -53,7 +53,7 @@ class _BasescreenState extends State<Basescreen> {
               icon: Icon(Icons.shopping_cart), label: 'carrinho'),
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'pedidos'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_outlined), label: 'pedidos'),
+              icon: Icon(Icons.person_outlined), label: 'outros'),
         ],
       ),
     );

@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pontal_delivery/src/home/components/category_tile.dart';
-
-import '../config/custom_colors.dart';
+import 'components/category_tile.dart';
 
 class HomeTab extends StatefulWidget {
-  HomeTab({Key? key}) : super(key: key);
+  const HomeTab({super.key});
 
   @override
-  State<HomeTab> createState() => _HomeTabState();
+  _HomeTabState createState() => _HomeTabState();
 }
 
 class _HomeTabState extends State<HomeTab> {
@@ -19,10 +17,10 @@ class _HomeTabState extends State<HomeTab> {
     'Entradas e petiscos',
     'pratos kid/individual',
     'fit',
-    'acompanhamentos',
+    'acompanhamentos'
   ];
 
-  String selectedCategory = '';
+  String selectedCategory = 'executivos';
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +35,7 @@ class _HomeTabState extends State<HomeTab> {
             children: [
               TextSpan(
                 text: 'Pontal',
-                style: TextStyle(
-                  color: CustomColors.customSwatchColor,
-                ),
+                style: TextStyle(color: Colors.green), // Cor do título
               ),
               const TextSpan(
                 text: 'Delivery',
@@ -51,8 +47,9 @@ class _HomeTabState extends State<HomeTab> {
           Padding(
             padding: const EdgeInsets.only(top: 15, right: 15),
             child: GestureDetector(
+              onTap: () {},
               child: Badge(
-                backgroundColor: const Color.fromARGB(255, 255, 0, 0),
+                backgroundColor: Colors.red,
                 label: const Text(
                   '0',
                   style: TextStyle(color: Colors.white, fontSize: 12),
@@ -61,7 +58,7 @@ class _HomeTabState extends State<HomeTab> {
                   onPressed: () {},
                   icon: Icon(
                     Icons.shopping_cart,
-                    color: CustomColors.customSwatchColor,
+                    color: Colors.green,
                   ),
                 ),
               ),
@@ -72,7 +69,7 @@ class _HomeTabState extends State<HomeTab> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Campo de pesquisa
+          // Barra de pesquisa
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: TextFormField(
@@ -87,7 +84,7 @@ class _HomeTabState extends State<HomeTab> {
                 ),
                 prefixIcon: Icon(
                   Icons.search,
-                  color: CustomColors.customSwatchColor,
+                  color: Colors.green,
                   size: 21,
                 ),
                 border: OutlineInputBorder(
@@ -97,30 +94,37 @@ class _HomeTabState extends State<HomeTab> {
               ),
             ),
           ),
-          // Lista de categorias centralizada horizontalmente
+
+          // Lista de categorias abaixo da barra de pesquisa
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 20),
             child: Center(
-              child: SizedBox(
-                height: 60,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  itemBuilder: (_, index) {
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: categories.map((category) {
                     return CategoryTile(
+                      category: category,
+                      isSelected: category == selectedCategory,
                       onPressed: () {
                         setState(() {
-                          selectedCategory = categories[index];
+                          selectedCategory = category;
                         });
                       },
-                      category: categories[index],
-                      isSelected: selectedCategory == categories[index],
                     );
-                  },
-                  separatorBuilder: (_, index) => const SizedBox(width: 10),
-                  itemCount: categories.length,
+                  }).toList(),
                 ),
+              ),
+            ),
+          ),
+
+          // Conteúdo adicional (se houver)
+          Expanded(
+            child: Center(
+              child: Text(
+                'Conteúdo da categoria: $selectedCategory',
+                style: const TextStyle(fontSize: 18, color: Colors.black),
               ),
             ),
           ),
@@ -129,4 +133,3 @@ class _HomeTabState extends State<HomeTab> {
     );
   }
 }
-
