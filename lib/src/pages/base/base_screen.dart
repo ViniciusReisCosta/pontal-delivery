@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pontal_delivery/src/home/home_tab.dart';
+import '../home/home_tab.dart';
 
 // ignore: must_be_immutable
 class Basescreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class _BasescreenState extends State<Basescreen> {
         controller: pageController,
         physics: const NeverScrollableScrollPhysics(),
         children: [
-          HomeTab(),
+          const HomeTab(),
           Container(
             color: Colors.yellow,
           ),

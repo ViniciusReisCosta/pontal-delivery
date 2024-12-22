@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pontal_delivery/src/pages/auth/components/item_tile.dart';
+import '../../config/app_data.dart' as appData;
+import '../../config/app_data.dart';
 import 'components/category_tile.dart';
 
 class HomeTab extends StatefulWidget {
@@ -9,16 +12,6 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  final List<String> categories = [
-    'executivos',
-    'bebidas',
-    'sobremessas',
-    'promo da semana',
-    'Entradas e petiscos',
-    'pratos kid/individual',
-    'fit',
-    'acompanhamentos'
-  ];
 
   String selectedCategory = 'executivos';
 
@@ -103,13 +96,19 @@ class _HomeTabState extends State<HomeTab> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: categories.map((category) {
+                  children: appData.categories.asMap().entries.map((entry) {
+
+                    final index = entry.key; // O índice
+                    final category = entry.value; // O valor da categoria
+
                     return CategoryTile(
-                      category: category,
-                      isSelected: category == selectedCategory,
+
+                      category: appData.categories[index],
+                      isSelected: appData.categories[index] == selectedCategory,
+
                       onPressed: () {
                         setState(() {
-                          selectedCategory = category;
+                          selectedCategory = appData.categories[index];
                         });
                       },
                     );
@@ -120,14 +119,32 @@ class _HomeTabState extends State<HomeTab> {
           ),
 
           // Conteúdo adicional (se houver)
-          Expanded(
+          /*Expanded(
             child: Center(
               child: Text(
                 'Conteúdo da categoria: $selectedCategory',
                 style: const TextStyle(fontSize: 18, color: Colors.black),
               ),
             ),
-          ),
+          ),*/
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              physics: const BouncingScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing:10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 9 / 11.5
+              ),
+              itemCount: appData.items.length,
+              itemBuilder: (_, index) {
+                return ItemTile(
+                  item: appData.items[index],
+                );
+              },
+            ),
+          )
         ],
       ),
     );
