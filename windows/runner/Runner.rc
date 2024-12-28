@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "pontal_delivery" "\0"
+            VALUE "FileDescription", "pontal_03" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "pontal_delivery" "\0"
+            VALUE "InternalName", "pontal_03" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "pontal_delivery.exe" "\0"
-            VALUE "ProductName", "pontal_delivery" "\0"
+            VALUE "OriginalFilename", "pontal_03.exe" "\0"
+            VALUE "ProductName", "pontal_03" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

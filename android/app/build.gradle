@@ -1,14 +1,13 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    // O Flutter Gradle Plugin deve ser aplicado após os plugins Android e Kotlin.
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
 
 android {
-    namespace = "com.example.pontal_delivery"
-    compileSdkVersion 35 // Usando a versão do SDK Android 35 (Android 12)
-
+    namespace = "com.example.pontal_03"
+    compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
@@ -21,24 +20,25 @@ android {
     }
 
     defaultConfig {
-        // Defina seu Application ID único
-        applicationId = "com.example.pontal_delivery"
-        minSdkVersion flutter.minSdkVersion // Versão mínima do SDK definida no flutter
-        targetSdkVersion flutter.targetSdkVersion // Versão de destino do SDK definida no flutter
-        versionCode flutter.versionCode // Código da versão do Flutter
-        versionName flutter.versionName // Nome da versão do Flutter
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId = "com.example.pontal_03"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
     }
 
     buildTypes {
         release {
-            // Configuração de assinatura para build de release
-            signingConfig = signingConfigs.debug // Use uma configuração de assinatura adequada
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig = signingConfigs.debug
         }
     }
 }
 
-// Especificação do Flutter
 flutter {
-    source = "../.." // Local do código Flutter
+    source = "../.."
 }
-
