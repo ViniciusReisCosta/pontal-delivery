@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:pontal_03/src/pages/auth/components/item_tile.dart';
 import '../../config/app_data.dart' as appData;
 
+=======
+import 'package:pontal_delivery/src/pages/auth/components/item_tile.dart';
+import '../../config/app_data.dart' as appData;
+import '../../config/app_data.dart';
+>>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
 import 'components/category_tile.dart';
 
 class HomeTab extends StatefulWidget {
@@ -99,7 +105,10 @@ class _HomeTabState extends State<HomeTab> {
                   children: appData.categories.asMap().entries.map((entry) {
 
                     final index = entry.key; // O índice
+<<<<<<< HEAD
                     // ignore: unused_local_variable
+=======
+>>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
                     final category = entry.value; // O valor da categoria
 
                     return CategoryTile(

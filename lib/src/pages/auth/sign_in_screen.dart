@@ -1,11 +1,19 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:pontal_03/src/pages/auth/sign_up_screen.dart';
+=======
+import 'package:pontal_delivery/src/pages/auth/sign_up_screen.dart';
+>>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
 
 import '../../config/custom_colors.dart';
 import '../base/base_screen.dart';
 
+<<<<<<< HEAD
 import '../common_widgets/customtextfield.dart';
+=======
+import 'components/customtextfield.dart';
+>>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
 
 class SignInscreen extends StatelessWidget {
   const SignInscreen({super.key});

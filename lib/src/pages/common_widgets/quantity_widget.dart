@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:pontal_03/src/config/custom_colors.dart';
+=======
+import 'package:pontal_delivery/src/config/custom_colors.dart';
+>>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
 
 class QuantityWidget extends StatelessWidget {
   final int value;
   final String suffixText;
   final Function(int quantity) result;
+<<<<<<< HEAD
   final bool isremovable;
+=======
+>>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
 
   const QuantityWidget({
     Key? key,
     required this.suffixText,
     required this.value,
     required this.result,
+<<<<<<< HEAD
     this.isremovable = false,
+=======
+>>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
   }) : super(key: key);
 
   @override
@@ -30,12 +40,21 @@ class QuantityWidget extends StatelessWidget {
           )
         ],
       ),
+<<<<<<< HEAD
       child: Row(mainAxisSize: MainAxisSize.min, children: [
         _QuantityButton(
           icon: !isremovable || value > 1 ? Icons.remove: Icons.delete,
           color:!isremovable || value > 1 ? Colors.grey: Colors.red,
           onPressed: () {
             if (value == 1 && !isremovable) return;
+=======
+      child: Row(children: [
+        _QuantityButton(
+          icon: Icons.remove,
+          color: Colors.grey,
+          onPressed: () {
+            if (value == 1) return;
+>>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
 
             int resultCount = value - 1;
 
