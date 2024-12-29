@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
+import 'package:pontal_03/src/pages/profile/profile.dart';
 import '../cart/cart_tab.dart';
-=======
->>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
 import '../home/home_tab.dart';
 
 // ignore: must_be_immutable
@@ -24,19 +22,11 @@ class _BasescreenState extends State<Basescreen> {
         physics: const NeverScrollableScrollPhysics(),
         children: [
           const HomeTab(),
-<<<<<<< HEAD
                 cardtab(),
-=======
-          Container(
-            color: Colors.yellow,
-          ),
->>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
           Container(
             color: Colors.purple,
           ),
-          Container(
-            color: Colors.orange,
-          ),
+          ProfileTab(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -61,7 +51,7 @@ class _BasescreenState extends State<Basescreen> {
               icon: Icon(Icons.shopping_cart), label: 'carrinho'),
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'pedidos'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.person_outlined), label: 'outros'),
+              icon: Icon(Icons.person_outlined), label: 'Perfil'),
         ],
       ),
     );

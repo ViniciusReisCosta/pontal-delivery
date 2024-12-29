@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-<<<<<<< HEAD
 import 'package:pontal_03/src/config/custom_colors.dart';
 import 'package:pontal_03/src/pages/common_widgets/customtextfield.dart';
-=======
-import 'package:pontal_delivery/src/config/custom_colors.dart';
-import 'package:pontal_delivery/src/pages/auth/components/customtextfield.dart';
->>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
 
 
 

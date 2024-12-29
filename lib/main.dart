@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 import 'package:pontal_03/src/pages/auth/sign_in_screen.dart';
-=======
-import 'package:pontal_delivery/src/pages/auth/sign_in_screen.dart';
->>>>>>> 8a7e8573245d83a8a9b9a95c18d7d42422affe39
 
 
 void main() {
