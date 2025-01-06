@@ -2,10 +2,11 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:pontal_delivery/src/pages/auth/sign_up_screen.dart';
 
+
 import '../../config/custom_colors.dart';
 import '../base/base_screen.dart';
 
-import 'components/customtextfield.dart';
+import '../common_widgets/custom_text_field.dart';
 
 class SignInscreen extends StatelessWidget {
   const SignInscreen({super.key});
@@ -31,10 +32,10 @@ class SignInscreen extends StatelessWidget {
                       ),
                       children: [
                         TextSpan(
-                            text: 'Pontal',
+                            text: 'Império ',
                             style: TextStyle(color: Colors.white)),
                         TextSpan(
-                            text: 'Delivery',
+                            text: 'Das Frutas',
                             style: TextStyle(
                                 color: Color.fromRGBO(244, 67, 54, 1),
                                 fontWeight: FontWeight.bold)),

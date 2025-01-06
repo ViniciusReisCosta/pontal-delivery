@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pontal_delivery/src/pages/auth/sign_in_screen.dart';
 
-
 void main() {
   runApp(const MyApp());
 }

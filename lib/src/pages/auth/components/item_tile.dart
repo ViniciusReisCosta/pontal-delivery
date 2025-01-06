@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pontal_delivery/src/config/custom_colors.dart';
-import 'package:pontal_delivery/src/models/item_model.dart';
-import 'package:pontal_delivery/src/pages/product/product_screen.dart';
-import 'package:pontal_delivery/src/services/utils_services.dart';
+
+import '../../../config/custom_colors.dart';
+import '../../../models/item_model.dart';
+import '../../../services/utils_services.dart';
+import '../../product/product_screen.dart';
+
 
 class ItemTile extends StatelessWidget {
 

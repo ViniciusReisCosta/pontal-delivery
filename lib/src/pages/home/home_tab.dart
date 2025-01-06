@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pontal_delivery/src/pages/auth/components/item_tile.dart';
+
 import '../../config/app_data.dart' as appData;
 import '../../config/app_data.dart';
+import '../auth/components/item_tile.dart';
 import 'components/category_tile.dart';
 
 class HomeTab extends StatefulWidget {

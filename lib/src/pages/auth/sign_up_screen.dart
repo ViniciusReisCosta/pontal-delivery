@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:pontal_delivery/src/config/custom_colors.dart';
-import 'package:pontal_delivery/src/pages/auth/components/customtextfield.dart';
 
-
+import '../../config/custom_colors.dart';
+import '../common_widgets/custom_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
    SignUpScreen({super.key});

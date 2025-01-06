@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pontal_delivery/src/config/custom_colors.dart';
-import 'package:pontal_delivery/src/models/item_model.dart';
-import 'package:pontal_delivery/src/pages/common_widgets/quantity_widget.dart';
-import 'package:pontal_delivery/src/services/utils_services.dart';
+
+import '../../config/custom_colors.dart';
+import '../../models/item_model.dart';
+import '../../services/utils_services.dart';
+import '../common_widgets/quantity_widget.dart';
+
 
 class ProductScreen extends StatefulWidget {
   ProductScreen({
