@@ -99,5 +99,5 @@ flutter:
 flutter_icons:
     android: true
     ios: true
-    image_path: "assets/logo/imperio_das_frutas.jpg"
+    image_path: "assets/logo/pontal_delivery.png"
     remove_alpha_ios: true
