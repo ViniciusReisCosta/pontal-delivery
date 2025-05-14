@@ -1,8 +1,10 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pontal_delivery/pages/auth/controller/auth_controller.dart';
 import 'package:pontal_delivery/pages/auth/sign_up_screen.dart';
 import 'package:pontal_delivery/pages/common_widgets/app_name_widget.dart';
-
+import 'package:pontal_delivery/pages_routes/app_pages.dart';
 
 import '../../config/custom_colors.dart';
 import '../base/base_screen.dart';
@@ -10,7 +12,13 @@ import '../base/base_screen.dart';
 import '../common_widgets/custom_text_field.dart';
 
 class SignInscreen extends StatelessWidget {
-  const SignInscreen({super.key});
+  SignInscreen({super.key});
+
+  final _formKey = GlobalKey<FormState>();
+
+  // Controlador de campos
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +35,6 @@ class SignInscreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-
                   AppNameWidget(
                     greenTitleColor: Colors.white,
                     textSize: 40,
@@ -62,102 +69,150 @@ class SignInscreen extends StatelessWidget {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(45)),
               ),
               child: SingleChildScrollView(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      //email
-                      const Customtextfield(
-                        icon: Icons.email,
-                        label: 'email',
-                      ),
-                      const SizedBox(
-                        height: 13,
-                        width: 120,
-                      ),
-                      //senha
-                      const Customtextfield(
-                        icon: Icons.lock,
-                        label: 'senha',
-                        issecret: true,
-                      ),
-                      const SizedBox(
-                        height: 13,
-                      ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        //email
+                        Customtextfield(
+                          controller: emailController,
+                          icon: Icons.email,
+                          label: 'email',
+                          validator: (email) {
+                            if (email == null || email.isEmpty) {
+                              return 'Digite seu email';
+                            }
 
-                      SizedBox(
-                        height: 50,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.deepOrange,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(18),
-                              )),
-                          onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(builder: (c) {
-                              return  const Basescreen();
-                            }));
+                            if (!email.isEmail) {
+                              return 'Digite um email válido !';
+                            }
+
+                            return null;
                           },
-                          child: const Text(
-                            'Entrar',
-                            style: TextStyle(fontSize: 18, color: Colors.white),
+                        ),
+                        const SizedBox(
+                          height: 13,
+                          width: 120,
+                        ),
+                        //senha
+                        Customtextfield(
+                          controller: passwordController,
+                          icon: Icons.lock,
+                          label: 'senha',
+                          issecret: true,
+                          validator: (password){
+
+                            if(password == null || password.isEmpty) {
+                              return 'Digite sua senha';
+                            }
+
+                            if(password.length < 7) {
+                              return 'Digite uma senha com pelo menos 7 caracteres';
+                            }
+
+                            return null;
+                          },
+                        ),
+                        const SizedBox(
+                          height: 13,
+                        ),
+
+                        SizedBox(
+                          height: 50,
+                          child: GetX<AuthController>(
+
+                            builder: (authController) {
+                              return ElevatedButton(
+                               style: ElevatedButton.styleFrom(
+                                 shape: RoundedRectangleBorder(
+                                   borderRadius: BorderRadius.circular(18),
+                                 ),
+                               ),
+
+                                onPressed: authController.isLoading.value
+                                    ? null
+                                    : () {
+
+                                    //FocusScope.of(context).unfocus();
+                                    if(_formKey.currentState!.validate()) {
+
+                                      String email = emailController.text;
+                                      String password = passwordController.text;
+
+                                      authController.signIn(email: email, password: password);
+                                    } else {
+
+                                      print('Campos não válidos');
+                                    }
+
+                                    //Get.offNamed(PagesRoutes.baseRoute);
+                                },
+                                child: authController.isLoading.value
+                                    ? CircularProgressIndicator()
+                                    :  Text(
+                                        'Entrar',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Colors.white
+                                        ),
+                                ),
+                              );
+                            },
                           ),
                         ),
-                      ),
 
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: TextButton(
-                            onPressed: () {},
-                            child: Text('esqueceu a senha?',
-                                style: TextStyle(
-                                    color: CustomColors.customConstrastColor))),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10.0),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Divider(
-                                color: Colors.grey.withAlpha(90),
-                                thickness: 2,
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Text('ou'),
-                            ),
-                            Expanded(
-                              child: Divider(
-                                color: Colors.grey.withAlpha(90),
-                                thickness: 2,
-                              ),
-                            ),
-                          ],
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: TextButton(
+                              onPressed: () {},
+                              child: Text('esqueceu a senha?',
+                                  style: TextStyle(
+                                      color: CustomColors.customConstrastColor))),
                         ),
-                      ),
-
-                      SizedBox(
-                        height: 50,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18)),
-                              side: const BorderSide(
-                                  width: 2, color: Colors.green)),
-                          onPressed: () {
-                            Navigator.of(context)
-                                .push(MaterialPageRoute(builder: (c) {
-                              return SignUpScreen();
-                            }));
-                          },
-                          child: const Text(
-                            'Novo Usuario',
-                            style: TextStyle(color: Colors.green, fontSize: 18),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Divider(
+                                  color: Colors.grey.withAlpha(90),
+                                  thickness: 2,
+                                ),
+                              ),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 15),
+                                child: Text('ou'),
+                              ),
+                              Expanded(
+                                child: Divider(
+                                  color: Colors.grey.withAlpha(90),
+                                  thickness: 2,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                    ]),
+
+                        SizedBox(
+                          height: 50,
+                          child: OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18)),
+                                side: const BorderSide(
+                                    width: 2, color: Colors.green)),
+                            onPressed: () {
+                              Get.toNamed(PagesRoutes.signUpRoute);
+                            },
+                            child: const Text(
+                              'Novo Usuario',
+                              style: TextStyle(color: Colors.green, fontSize: 18),
+                            ),
+                          ),
+                        ),
+                      ]),
+                ),
               ),
             ),
           ]),
