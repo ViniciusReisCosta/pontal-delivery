@@ -4,10 +4,13 @@ import 'package:pontal_delivery/pages/auth/controller/auth_controller.dart';
 import 'package:pontal_delivery/pages/splash/splash_screen.dart';
 import 'package:pontal_delivery/pages_routes/app_pages.dart';
 
-import 'pages/auth/sign_in_screen.dart';
+import 'pages/auth/view/sign_in_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   Get.put(AuthController());
+
   runApp(const MyApp());
 }
 

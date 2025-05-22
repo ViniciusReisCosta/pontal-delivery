@@ -1,41 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pontal_delivery/config/custom_colors.dart';
-import 'package:pontal_delivery/pages/auth/sign_in_screen.dart';
 import 'package:pontal_delivery/pages/common_widgets/app_name_widget.dart';
 import 'package:pontal_delivery/pages_routes/app_pages.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-
+  Widget build(BuildContext context) {
+    // Executa o redirecionamento após o primeiro frame
     Future.delayed(const Duration(seconds: 2), () {
       Get.offNamed(PagesRoutes.signInRoute);
     });
-  }
 
-  @override
-  Widget build(BuildContext context) {
     return Material(
       child: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            CustomColors.customSwatchColor,
-            CustomColors.customSwatchColor.shade700
-          ],
-        )),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              CustomColors.customSwatchColor,
+              CustomColors.customSwatchColor.shade700,
+            ],
+          ),
+        ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: const [
@@ -46,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(height: 10),
             CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation(Colors.white),
-            )
+            ),
           ],
         ),
       ),

@@ -2,14 +2,14 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pontal_delivery/pages/auth/controller/auth_controller.dart';
-import 'package:pontal_delivery/pages/auth/sign_up_screen.dart';
+import 'package:pontal_delivery/pages/auth/view/sign_up_screen.dart';
 import 'package:pontal_delivery/pages/common_widgets/app_name_widget.dart';
 import 'package:pontal_delivery/pages_routes/app_pages.dart';
 
-import '../../config/custom_colors.dart';
-import '../base/base_screen.dart';
+import '../../../config/custom_colors.dart';
+import '../../base/base_screen.dart';
 
-import '../common_widgets/custom_text_field.dart';
+import '../../common_widgets/custom_text_field.dart';
 
 class SignInscreen extends StatelessWidget {
   SignInscreen({super.key});

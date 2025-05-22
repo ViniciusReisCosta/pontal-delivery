@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pontal_delivery/pages/auth/sign_in_screen.dart';
-import 'package:pontal_delivery/pages/auth/sign_up_screen.dart';
+import 'package:pontal_delivery/pages/auth/view/sign_in_screen.dart';
+import 'package:pontal_delivery/pages/auth/view/sign_up_screen.dart';
 import 'package:pontal_delivery/pages/base/base_screen.dart';
 import 'package:pontal_delivery/pages/splash/splash_screen.dart';
 
