@@ -32,7 +32,7 @@ HSPLandroidx/lifecycle/ProcessLifecycleInitializer;->a()Ljava/util/List;
 HSPLandroidx/lifecycle/s;-><clinit>()V
 HSPLandroidx/lifecycle/s;-><init>()V
 HSPLandroidx/lifecycle/s;->m()Landroidx/lifecycle/l;
-HSPLandroidx/lifecycle/s;->f()Landroidx/lifecycle/h;
+HSPLandroidx/lifecycle/s;->h()Landroidx/lifecycle/h;
 HSPLandroidx/lifecycle/u$c;-><init>()V
 HSPLandroidx/lifecycle/u$c;->onActivityCreated(Landroid/app/Activity;Landroid/os/Bundle;)V
 PLandroidx/lifecycle/u$c;->onActivityDestroyed(Landroid/app/Activity;)V

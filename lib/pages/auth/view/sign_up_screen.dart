@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:pontal_delivery/pages/auth/controller/auth_controller.dart';
 
 import '../../../config/custom_colors.dart';
+import '../../../services/validators.dart';
 import '../../common_widgets/custom_text_field.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -16,6 +19,9 @@ class SignUpScreen extends StatelessWidget {
    mask: '##.#.####-####',
    filter:{'#':RegExp(r'[0-9]')},
   );
+
+  final _formKey = GlobalKey<FormState>();
+  final authController = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -66,57 +72,100 @@ class SignUpScreen extends StatelessWidget {
                         color: Color.fromARGB(255, 244, 244, 244),
                         borderRadius:
                             BorderRadius.vertical(top: Radius.circular(45))),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        const Customtextfield(
-                          icon: Icons.email,
-                          label: 'Email',
-                        ),
-                         const SizedBox(height: 16),
-                        const Customtextfield(
-                          icon: Icons.lock,
-                          label: 'Senha',
-                          issecret: true,
-                        ), const SizedBox(height: 16),
-                      
-                        const Customtextfield(
-                          icon: Icons.person,
-                          label: 'Nome',
-                        ), 
-                        const SizedBox(height: 16),
-                      
-                        Customtextfield(
-                          icon: Icons.phone,
-                          label: 'Celular',
-                          inputFormatters:[phoneFormatter],
-                        ),
-                         const SizedBox(height: 16),
-                      
-                        Customtextfield(
-                          icon: Icons.file_copy,
-                          label: 'Cpf',
-                          inputFormatters: [cpffFormatter],
-                        ), const SizedBox(height: 16),
-                      
-                        SizedBox(
-                          height: 50,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18),
-                            )),
-                            onPressed: () {},
-                            child: const Text(
-                              'Cadastrar Usuario',
-                              style: TextStyle(
-                                fontSize: 18,
-                              ),
-                            ),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Customtextfield(
+                            icon: Icons.email,
+                            label: 'Email',
+                            onSaved: (value){
+                              authController.user.email = value;
+                            },
+                            validator: emailValidator,
+                            textInputType: TextInputType.emailAddress,
                           ),
-                        ),
-                       
-                      ],
+                           const SizedBox(height: 16),
+                           Customtextfield(
+                            icon: Icons.lock,
+                            label: 'Senha',
+                            onSaved: (value){
+                              authController.user.password = value;
+                            },
+                            validator: passwordValidator,
+                            issecret: true,
+                          ), const SizedBox(height: 16),
+
+                           Customtextfield(
+                            icon: Icons.person,
+                            label: 'Nome',
+                            onSaved: (value){
+                              authController.user.name = value;
+                            },
+                            validator: nameValidator,
+                          ),
+                          const SizedBox(height: 16),
+
+                          Customtextfield(
+                            icon: Icons.phone,
+                            label: 'Celular',
+                            onSaved: (value){
+                              authController.user.phone = value;
+                            },
+                            validator: phoneValidator,
+                            textInputType: TextInputType.phone,
+                            inputFormatters:[phoneFormatter],
+                          ),
+                           const SizedBox(height: 16),
+
+                          Customtextfield(
+                            icon: Icons.file_copy,
+                            label: 'Cpf',
+                            onSaved: (value){
+                              authController.user.cpf = value;
+                            },
+                            validator: cpfvalidator,
+                            textInputType: TextInputType.number,
+                            inputFormatters: [cpffFormatter],
+                          ), const SizedBox(height: 16),
+
+                          SizedBox(
+                            height: 50,
+                            child: Obx((){
+
+                              return ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18),
+                                    )),
+                                onPressed: authController.isLoading.value ? null
+                                    : () {
+
+                                  FocusScope.of(context).unfocus();
+
+                                  if(_formKey.currentState!.validate()) {
+
+                                    _formKey.currentState!.save();
+
+                                    authController.signUp();
+                                  }
+                                },
+                                child: authController.isLoading.value
+                                    ? CircularProgressIndicator()
+                                    :  Text(
+                                  'Cadastrar usuário',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white
+                                  ),
+                                ),
+                              );
+                            })
+                          ),
+
+                        ],
+                      ),
                     ),
                   ),
                 ],

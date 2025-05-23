@@ -1,6 +1,6 @@
 // android/build.gradle
 buildscript {
-    ext.kotlin_version = '1.9.10' // Compatível com Gradle 7.4+
+    ext.kotlin_version = '1.9.0' // Compatível com Gradle 7.4+
     repositories {
         google()
         mavenCentral()

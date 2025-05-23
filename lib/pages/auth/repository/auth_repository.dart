@@ -8,6 +8,19 @@ class AuthRepository {
 
   final HttpManager _httpManager = HttpManager();
 
+  handleUserOrError(Map<dynamic, dynamic> result) {
+
+    if(result['result'] != null) {
+
+      final user = UserModel.fromJson(result['result']);
+      return AuthResult.success(user);
+
+    } else {
+
+      return AuthResult.error(authErros.authErrorsString(result['error']));
+    }
+  }
+
   Future<AuthResult> validateToken(String token) async{
 
     final result = await _httpManager.restRequest(
@@ -18,16 +31,7 @@ class AuthRepository {
         }
     );
 
-    if(result['result'] != null) {
-
-      final user = UserModel.fromJson(result['result']);
-      return AuthResult.success(user);
-
-    } else {
-
-      return AuthResult.error(authErros.authErrorsString(result['error']));
-
-    }
+    return handleUserOrError(result);
   }
 
   Future <AuthResult> signIn({required String email, required String password}) async {
@@ -41,16 +45,17 @@ class AuthRepository {
       }
     );
 
-    if(result['result'] != null) {
+    return handleUserOrError(result);
+  }
 
-      final user = UserModel.fromJson(result['result']);
+  Future<AuthResult> signUp(UserModel user) async {
 
-      return AuthResult.success(user);
+   final result = await  _httpManager.restRequest(
+      url: Endpoints.signup,
+      method: HttpMethods.post,
+      body: user.toJson(),
+    );
 
-    } else {
-
-      return AuthResult.error(authErros.authErrorsString(result['error']));
-
-    }
+    return handleUserOrError(result);
   }
 }

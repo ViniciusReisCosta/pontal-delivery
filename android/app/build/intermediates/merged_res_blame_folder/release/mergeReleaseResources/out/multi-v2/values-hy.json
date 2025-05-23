@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pontal_delivery.app-mergeReleaseResources-23:/values-hy/values-hy.xml",
+            "outputFile": "com.example.pontal_delivery.app-mergeReleaseResources-26:/values-hy/values-hy.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Gustavo\\.gradle\\caches\\transforms-3\\a8b9508d5e8360fab7f0e188056314cf\\transformed\\core-1.13.1\\res\\values-hy\\values-hy.xml",
+                    "source": "C:\\Users\\Gustavo\\.gradle\\caches\\transforms-3\\9c1cf8274d891439e09bf20f9d38f6e8\\transformed\\core-1.13.1\\res\\values-hy\\values-hy.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

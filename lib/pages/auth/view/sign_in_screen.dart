@@ -5,6 +5,7 @@ import 'package:pontal_delivery/pages/auth/controller/auth_controller.dart';
 import 'package:pontal_delivery/pages/auth/view/sign_up_screen.dart';
 import 'package:pontal_delivery/pages/common_widgets/app_name_widget.dart';
 import 'package:pontal_delivery/pages_routes/app_pages.dart';
+import 'package:pontal_delivery/services/validators.dart';
 
 import '../../../config/custom_colors.dart';
 import '../../base/base_screen.dart';
@@ -79,17 +80,7 @@ class SignInscreen extends StatelessWidget {
                           controller: emailController,
                           icon: Icons.email,
                           label: 'email',
-                          validator: (email) {
-                            if (email == null || email.isEmpty) {
-                              return 'Digite seu email';
-                            }
-
-                            if (!email.isEmail) {
-                              return 'Digite um email válido !';
-                            }
-
-                            return null;
-                          },
+                          validator: emailValidator,
                         ),
                         const SizedBox(
                           height: 13,
@@ -101,18 +92,7 @@ class SignInscreen extends StatelessWidget {
                           icon: Icons.lock,
                           label: 'senha',
                           issecret: true,
-                          validator: (password){
-
-                            if(password == null || password.isEmpty) {
-                              return 'Digite sua senha';
-                            }
-
-                            if(password.length < 7) {
-                              return 'Digite uma senha com pelo menos 7 caracteres';
-                            }
-
-                            return null;
-                          },
+                          validator: passwordValidator
                         ),
                         const SizedBox(
                           height: 13,
@@ -141,12 +121,7 @@ class SignInscreen extends StatelessWidget {
                                       String password = passwordController.text;
 
                                       authController.signIn(email: email, password: password);
-                                    } else {
-
-                                      print('Campos não válidos');
                                     }
-
-                                    //Get.offNamed(PagesRoutes.baseRoute);
                                 },
                                 child: authController.isLoading.value
                                     ? CircularProgressIndicator()

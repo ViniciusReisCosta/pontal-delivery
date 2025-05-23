@@ -32,6 +32,6 @@
       applicationId="com.example.pontal_delivery"
       generatedSourceFolders="build\generated\ap_generated_sources\release\out"
       generatedResourceFolders="build\generated\res\resValues\release"
-      desugaredMethodsFiles="C:\Users\Gustavo\.gradle\caches\transforms-3\d672a7c821bf28df05292596ccd37394\transformed\D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="C:\Users\Gustavo\.gradle\caches\transforms-3\f49cf03f845ec1d31d1fbc15bb22df91\transformed\D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

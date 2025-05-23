@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pontal_delivery/pages/auth/controller/auth_controller.dart';
 import 'package:pontal_delivery/pages/common_widgets/custom_text_field.dart';
 import 'package:pontal_delivery/config/app_data.dart' as appData;
 
@@ -10,6 +12,9 @@ class ProfileTab extends StatefulWidget {
 }
 
 class _ProfileTabState extends State<ProfileTab> {
+
+  final authController = Get.find<AuthController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +22,9 @@ class _ProfileTabState extends State<ProfileTab> {
         title: Text('Perfil do usuário'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              authController.signOut();
+            },
             icon: Icon(
               Icons.logout,
             ),
