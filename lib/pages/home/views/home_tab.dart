@@ -2,12 +2,13 @@ import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:pontal_delivery/pages/common_widgets/custom_shimmer.dart';
-
-import '../../config/app_data.dart' as appData;
-import '../../config/custom_colors.dart';
-import '../auth/components/item_tile.dart';
-import '../common_widgets/app_name_widget.dart';
-import 'components/category_tile.dart';
+import 'package:get/get.dart';
+import '../controller/home_controller.dart';
+import '../../../config/app_data.dart' as appData;
+import '../../../config/custom_colors.dart';
+import '../../auth/components/item_tile.dart';
+import '../../common_widgets/app_name_widget.dart';
+import '../components/category_tile.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -31,16 +32,20 @@ class _HomeTabState extends State<HomeTab> {
 
   @override
   void initState() {
+
     super.initState();
 
-    Future.delayed(
-      const Duration(seconds: 3),
-      () {
+    // Exemplo de uso do controller
+    Get.find<HomeController>().printExample();
+
+    // Simulação de carregamento
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
         setState(() {
           isLoading = false;
         });
-      },
-    );
+      }
+    });
   }
 
   @override

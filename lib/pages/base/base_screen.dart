@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pontal_delivery/pages/cart/cart_tab.dart';
 import 'package:pontal_delivery/pages/orders/orders_tab.dart';
 import 'package:pontal_delivery/pages/profile/profile_tab.dart';
-import '../home/home_tab.dart';
+import '../home/views/home_tab.dart';
 
 // ignore: must_be_immutable
 class Basescreen extends StatefulWidget {
